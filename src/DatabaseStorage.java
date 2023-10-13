@@ -2,16 +2,13 @@ import java.util.List;
 
 public interface DatabaseStorage {
 
-    boolean saveData(Object data);
+    void saveData(Person person);
 
+    void deleteData(Person person);
 
-    boolean deleteData(Object data);
+    Person getDataById(int id);
 
-
-    Object getDataById(int id);
-
-
-    List<Object> getAllData();
+    List<Person> getAllPersons();
 
 
 }

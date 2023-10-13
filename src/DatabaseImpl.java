@@ -3,39 +3,29 @@ import java.util.List;
 
 public class DatabaseImpl  implements DatabaseStorage{
 
-    private final List<Object> database;
+List<Person>database = new ArrayList<>();
+    @Override
+    public void saveData(Person person) {
+        database.add(person);
 
-    public DatabaseImpl() {
-        database = new ArrayList<>();
     }
 
     @Override
-    public boolean saveData(Object data) {
-        return database.add(data);
+    public void deleteData(Person person) {
+        database.remove(person);
     }
 
     @Override
-    public boolean deleteData(Object data) {
-        return database.remove(data);
-    }
-
-    @Override
-    public Object getDataById(int id) {
-        for (Object item : database) {
-            if (item instanceof Person person) {
-                if (person.getId() == id) {
-                    return person;
-                }
+    public Person getDataById(int id) {
+        for (Person item:database) {
+            if (item.getId()==id){
+                return item;
             }
         }
         return null;
     }
-
-
     @Override
-    public List<Object> getAllData() {
+    public List<Person> getAllPersons() {
         return database;
     }
-
-
 }
